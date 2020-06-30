@@ -31,17 +31,29 @@ public class D0630ExPdfThrow {
 	}
 	
 	public void test2() {
-		Cat[] cats = new Cat[10];
-		System.out.println(cats[11].name); // IndexOutOfBoundsException
+		Apple[] cats = new Apple[10];
+		try {
+//		System.out.println(cats[11].name); // IndexOutOfBoundsException
 //		System.out.println(cats[0].name); // NullPointerException
 		
+			   //System.out.println(cats[11].name); // IndexOutOfBoundsException
+			   System.out.println(cats[0].name); // NullPointerException
+			  } catch (IndexOutOfBoundsException e) {
+			   //System.out.println(e.getMessage());
+			   e.printStackTrace(); // log에 error를 표시해 준다
+			  } catch (NullPointerException e) {
+			   //System.out.println(e.getMessage());
+			   e.printStackTrace(); // log에 error를 표시해 준다
+			  } final {
+			   System.out.println("finally 호출");
+			  }
 	}
 }
 
-class Cat{
+class Apple{
 	String name;
 	int age;
-	public Cat(String name, int age) {
+	public Apple(String name, int age) {
 		this.name = name;
 		this.age = age;
 	}
