@@ -443,8 +443,7 @@ public class D0629TeamFin {
 									break;
 								}
 							}
-						
-							
+					
 						} while (check1);
 						break;
 					default:
