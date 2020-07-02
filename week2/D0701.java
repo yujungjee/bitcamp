@@ -23,6 +23,7 @@ class Mother {
 	String name;
 	int age;
 	String job;
+	private final int CHLENGTH = 10; // 배열에 있는 값을 final 고정시켜서 가져오는게 좋다
 	private Child[] childs;
 
 	public Mother(String name, int age) {
@@ -30,9 +31,13 @@ class Mother {
 		this.age = age;
 	}
 
-//	public Mother(String name, int age, String job, Child[] childs) {
-//
-//	}
+	public Mother(String name, int age, String job, Child[] childs) {
+		this(name,age);
+		this.job = job;
+
+	}
+
+
 
 	public String getName() {
 		return name;
