@@ -5,22 +5,15 @@ public class D0630 {
 		Programmer pro = new Programmer();
 		Project proj = new Project();
 		proj.setCompany("A회사");
-		proj.setMonth(12);
-		proj.setName("홍길동");
+		proj.setMonth(6);
+		proj.setName("개발");
+		pro.setName("홍길동");
+		pro.setAge(29);
+		
 		pro.addProjectHistory(proj);
+		pro.printProjectHistory();
+		System.out.println("총 경력:"+pro.getTotalHistory());
 				
-//				"프로젝트","A",1);
-//		Project proj2 = new Project("프로젝트","B",2);
-//		Project proj3 = new Project("프로젝트","C",3);
-//		Project proj4 = new Project("프로젝트","D",4);
-//		pro.addProjectHistory(proj4);
-//		pro.addProjectHistory(proj2);
-//		pro.addProjectHistory(proj3);
-//		pro.addProjectHistory(proj4);
-//		pro.printProjectHistory();
-//		System.out.println("총 경력:" +pro.getTotalHistory());
-		
-		
 	}
 }
 
@@ -60,7 +53,7 @@ class Programmer {
 	}
 	void printProjectHistory() { // Project경력을 출력한다.
 		for(int i = 0; i<ph; i++) {
-			System.out.printf("회사이름: %s, 기간: %s개월%n",history[i].getName(),history[i].getMonth());
+			System.out.printf("회사이름: %s, 기간: %s개월%n",history[i].getCompany(),history[i].getMonth());
 		}
 	}
 	

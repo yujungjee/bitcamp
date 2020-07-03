@@ -9,10 +9,11 @@ public class D0702 {
 		p.join(p1);
 		p.join(p2);
 		p.join(p3);
-		System.out.println("프로젝트 총 Resource: " +p.getMMByDeveloper());
 		p.printDeveloper();
+		System.out.println("프로젝트 총 Resource: " +p.getMMByDeveloper());
+		
 		p.process();
-		//		System.out.println(p.getPeriod());
+//		System.out.println(p.getPeriod());
 
 
 	}
@@ -20,8 +21,8 @@ public class D0702 {
 
 abstract class Project{
 	private String name, startDt, endDt, location;
-	private Developer[] dev;
-	private int idx, sum;
+	private Developer[] dev = new Developer[5];
+	private int idx;
 
 	Project(String name, String startDt, String endDt, String location){
 		this.name = name;
@@ -61,24 +62,33 @@ abstract class Project{
 	public abstract void develop();
 
 	// startDt와 endDt의 날짜차이를 리턴, getTimeInMillis()이용
-
 	// public int getPeriod();
-
 	// Project에 참여한 개발자의 총 월간 개월수
-	public int getMMByDeveloper();
-	for(int i = 0; i<idx; i++) {
-		sum+= dev[i].getPeriod();
+	public int getMMByDeveloper() {
+		int sum = 0;
+		for(int i = 0; i<idx; i++) { // 향상된 for문으로
+			sum+= dev[i].getPeriod();
+		}
+		return sum;
 	}
-	return sum;
+
+
 
 	// 고급개발자인 경우 ‘고급개발자’로 출력하고 특기표시
+	// 일반개발자 홍길동
+	// 일반개발자 김길동
+	// 고급개발자 김고급/특기 java
 	public void printDeveloper() {
-		// 일반개발자 홍길동
-		// 일반개발자 김길동
-		// 고급개발자 김고급/특기 java
+		for(int i=0; i<idx; i++) {
+			if(dev[i] instanceof HighDeveloper) {
+				System.out.println("고급개발자" + dev[i].getName() + "/ 특기:" + ((HighDeveloper)dev[i]).getSpecialSkill());
+			} else {
+				System.out.println("일반개발자" + dev[i].getName());
+			}
+		}
 	}
-
 }
+
 
 class HrProject extends Project{
 
@@ -120,9 +130,9 @@ class Developer{
 	public void setPeriod(int period) {
 		this.period = period;
 	}
-	public String toString() {
-		return "일반개발자" + getName();
-	}
+//	public String toString() {
+//		return "일반개발자" + getName();
+//	}
 
 }
 
@@ -143,9 +153,9 @@ class HighDeveloper extends Developer{
 		this.specialSkill = specialSkill;
 	}
 
-	public String toString() {
-		return "고급개발자" + getName() + "/" + "특기" + getSpecialSkill();
-	}
+//	public String toString() {
+//		return "고급개발자" + getName() + "/" + "특기" + getSpecialSkill();
+//	}
 
 }
 
